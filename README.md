@@ -14,6 +14,9 @@ Aplicação desenvolvida utilizando o [AdonisJs - Node.js web framework](https:/
 
 ## Routes Documentation
 
+#### Prefix for all routes -> api/v1
+
+---
 ### User Router
 - ( /user ) - POST - Create a new User
 - ( /user ) - GET - Show logged user => **Middleware** [auth]
