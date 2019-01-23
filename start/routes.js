@@ -15,3 +15,10 @@ Route.group(() => {
   Route.get('/user', 'UserController.show').as('user.show')
   Route.put('/user', 'UserController.update').as('users.update')
 }).middleware(['auth'])
+
+// -------------------- admin -------------------- //
+Route.group(() => {
+  // ----- Users -----
+  Route.resource('/users', 'UserController').apiOnly()
+    .middleware(['auth:jwt', 'is:(administrator)'])
+}).namespace('Admin')
