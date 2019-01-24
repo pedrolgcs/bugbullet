@@ -6,7 +6,6 @@ const Route = use('Route')
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 }).prefix('api/v1')
-// Router Group prefix
 
 // -------------------- Login -------------------- //
 Route.post('/sessions', 'SessionController.create').prefix('api/v1')
@@ -22,10 +21,10 @@ Route.group(() => {
 Route.group(() => {
   // ----- Users -----
   Route.resource('/users', 'UserController').apiOnly()
-    .middleware(['auth:jwt', 'is:(administrator)'])
+    .middleware(['auth:jwt', 'can:users'])
   // ----- Notices -----
   Route.resource('/notices', 'NoticeController').apiOnly()
     .middleware(new Map([
-      [['index', 'store', 'update', 'destroy'], ['auth:jwt', 'can:notices']]
+      [['store', 'update', 'destroy'], ['auth:jwt', 'can:notices']]
     ]))
 }).namespace('Admin').prefix('api/v1')

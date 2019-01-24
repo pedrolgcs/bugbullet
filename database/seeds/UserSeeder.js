@@ -39,9 +39,19 @@ class UserSeeder {
     await jana.roles().save(coordinator)
 
     // ----------------------------- Permission -----------------------------
-    const notices = await Factory.model('Adonis/Acl/Permission').make()
+    const users = await Factory.model('Adonis/Acl/Permission').make({
+      slug: 'users',
+      name: 'Moderador de usuarios',
+      description: 'Controle sobre os usuários do sistema'
+    })
+    const notices = await Factory.model('Adonis/Acl/Permission').make({
+      slug: 'notices',
+      name: 'Moderador de Noticias',
+      description: 'Publicar e gerenciar nóticas no sistema'
+    })
     // ----------------------------- Roles Permission ------------------------
     await administrator.permissions().save(notices)
+    await administrator.permissions().save(users)
 
     // ----------------------------- Notices --------------------------------
     const noticePedro = await Factory.model('App/Models/Notice').make()

@@ -36,9 +36,9 @@ Factory.blueprint('Adonis/Acl/Role', (faker, i, data = {}) => {
 // Permissions
 Factory.blueprint('Adonis/Acl/Permission', (faker, i, data = {}) => {
   data = Object.assign({
-    slug: 'notices' || data.slug,
-    name: 'Moderador de Noticias' || data.name,
-    description: 'Publicar e gerenciar nóticas no sistema' || data.description
+    slug: data.slug,
+    name: data.name,
+    description: data.description
   }, data)
   return data
 })
