@@ -23,4 +23,9 @@ Route.group(() => {
   // ----- Users -----
   Route.resource('/users', 'UserController').apiOnly()
     .middleware(['auth:jwt', 'is:(administrator)'])
+  // ----- Notices -----
+  Route.resource('/notices', 'NoticeController').apiOnly()
+    .middleware(new Map([
+      [['index', 'store', 'update', 'destroy'], ['auth:jwt', 'can:notices']]
+    ]))
 }).namespace('Admin').prefix('api/v1')

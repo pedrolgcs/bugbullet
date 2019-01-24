@@ -14,6 +14,7 @@
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
 
+// Users
 Factory.blueprint('App/Models/User', (faker, i, data) => {
   return {
     name: data.name,
@@ -22,6 +23,7 @@ Factory.blueprint('App/Models/User', (faker, i, data) => {
   }
 })
 
+// Roles
 Factory.blueprint('Adonis/Acl/Role', (faker, i, data = {}) => {
   data = Object.assign({
     slug: 'administrator' || data.slug,
@@ -29,4 +31,23 @@ Factory.blueprint('Adonis/Acl/Role', (faker, i, data = {}) => {
     description: 'Administrator system' || data.description
   }, data)
   return data
+})
+
+// Permissions
+Factory.blueprint('Adonis/Acl/Permission', (faker, i, data = {}) => {
+  data = Object.assign({
+    slug: 'notices' || data.slug,
+    name: 'Moderador de Noticias' || data.name,
+    description: 'Publicar e gerenciar nóticas no sistema' || data.description
+  }, data)
+  return data
+})
+
+// Notices
+Factory.blueprint('App/Models/Notice', async (faker) => {
+  return {
+    title: faker.name(),
+    sub_title: faker.sentence(),
+    notice: faker.paragraph()
+  }
 })

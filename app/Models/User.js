@@ -26,13 +26,14 @@ class User extends Model {
    * work. Since features like `refreshTokens` or
    * `rememberToken` will be saved inside the
    * tokens table.
-   *
-   * @method tokens
-   *
-   * @return {Object}
    */
   tokens () {
     return this.hasMany('App/Models/Token')
+  }
+
+  // one user has multiples notices
+  notices () {
+    return this.hasMany('App/Models/Notice')
   }
 
   // hidden password return
