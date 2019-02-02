@@ -37,8 +37,8 @@ class User extends Model {
   }
 
   // a user belongs to a sector
-  sector () {
-    return this.belongsTo('App/Models/Sector')
+  sectors () {
+    return this.belongsToMany('App/Models/Sector')
   }
 
   // hidden password return

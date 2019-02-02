@@ -51,3 +51,12 @@ Factory.blueprint('App/Models/Notice', async (faker) => {
     notice: faker.paragraph()
   }
 })
+
+// Sector
+Factory.blueprint('App/Models/Sector', (faker, i, data = {}) => {
+  data = Object.assign({
+    name: data.name,
+    description: data.description
+  }, data)
+  return data
+})

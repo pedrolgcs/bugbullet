@@ -23,16 +23,15 @@ Aplicação desenvolvida utilizando o [AdonisJs - Node.js web framework](https:/
 - ( /user ) - PUT - Update user logged => **Middleware** [auth]
 ---
 ### Users Moderator
-> **Middlewares** => [ auth, can:(users) ]
-- ( /users ) - GET - List all users
-- ( /users ) - POST - Create a new User
-- ( /users:id ) - GET - Show a user by ID
-- ( /users:id ) - PUT - Update user by ID
-- ( /users:id ) - DELETE - Delete user by ID
+- ( /users ) - GET - List all users => **Middleware** [auth, can:(read_users)]
+- ( /users ) - POST - Create a new User => **Middleware** [auth, can:(create_users)]
+- ( /users:id ) - GET - Show a user by ID => **Middleware** [auth, can:(read_users)]
+- ( /users:id ) - PUT - Update user by ID => **Middleware** [auth, can:(update_users)]
+- ( /users:id ) - DELETE - Delete user by ID => **Middleware** [auth, can:(delete_users)]
 ---
 ### Notices Moderator
 - ( /notices ) - GET - List all notices order by last notices
-- ( /notices ) - POST - Create a new Notice => **Middleware** [auth, can:(notices)]
+- ( /notices ) - POST - Create a new Notice => **Middleware** [auth, can:(create_notice)]
 - ( /notices:id ) - GET - Show a notice by ID
-- ( /notices:id ) - PUT - Update notice by ID => **Middleware** [auth, can:(notices)]
-- ( /notices:id ) - DELETE - Delete notice by ID => **Middleware** [auth, can:(notices)]
+- ( /notices:id ) - PUT - Update notice by ID => **Middleware** [auth, can:(update_notice)]
+- ( /notices:id ) - DELETE - Delete notice by ID => **Middleware** [auth, can:(delete_notice)]

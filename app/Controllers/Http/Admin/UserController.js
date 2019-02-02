@@ -12,6 +12,7 @@ class UserController {
     const { page } = request.all()
     try {
       const users = await User.query()
+        .with('sectors')
         .with('roles')
         .with('permissions')
         .paginate(page, 20)

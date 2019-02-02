@@ -58,6 +58,13 @@ class UserSeeder {
     await pedro.notices().save(noticePedro)
     const noticeJana = await Factory.model('App/Models/Notice').make()
     await jana.notices().save(noticeJana)
+
+    // ----------------------------- Sector --------------------------------
+    const zoonose = await Factory.model('App/Models/Sector').create({
+      name: 'Zoonose',
+      description: 'Setor responsavel por problemas de origem Animal'
+    })
+    await pedro.sectors().save(zoonose)
   }
 }
 

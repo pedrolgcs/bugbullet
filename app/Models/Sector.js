@@ -6,7 +6,7 @@ const Model = use('Model')
 class Sector extends Model {
   // one sector hasMany users
   users () {
-    return this.hasMany('App/Models/User')
+    return this.belongsToMany('App/Models/User')
   }
 }
 
