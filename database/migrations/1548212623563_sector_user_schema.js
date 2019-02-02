@@ -10,19 +10,17 @@ class SectorUserSchema extends Schema {
       table
         .integer('user_id')
         .unsigned()
-        .nullable()
         .references('id')
         .inTable('users')
         .onUpdate('CASCADE')
-        .onDelete('SET NULL')
+        .onDelete('CASCADE')
       table
         .integer('sector_id')
         .unsigned()
-        .nullable()
         .references('id')
         .inTable('sectors')
         .onUpdate('CASCADE')
-        .onDelete('SET NULL')
+        .onDelete('CASCADE')
       table.timestamps()
     })
   }
