@@ -26,7 +26,7 @@ class SectorUserSchema extends Schema {
   }
 
   down () {
-    this.drop('sector_users')
+    this.drop('sector_user')
   }
 }
 
