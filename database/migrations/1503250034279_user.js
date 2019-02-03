@@ -19,15 +19,6 @@ class UserSchema extends Schema {
       table.string('neighborhood', 254).nullable()
       table.string('street', 254).nullable()
       table.string('number', 10).nullable()
-      // sector
-      table
-        .integer('sector_id')
-        .unsigned()
-        .nullable()
-        .references('id')
-        .inTable('sectors')
-        .onUpdate('CASCADE')
-        .onDelete('SET NULL')
       // data time
       table.timestamps()
     })
