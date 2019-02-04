@@ -34,24 +34,44 @@ class UserSeeder {
       name: 'Coordinator',
       description: 'Coordinator system'
     })
-    // ----------------------------- User Role -----------------------------
+    // ----------------------------- User Role ------------------------------
     await pedro.roles().save(administrator)
     await jana.roles().save(coordinator)
 
     // ----------------------------- Permission -----------------------------
-    const users = await Factory.model('Adonis/Acl/Permission').make({
-      slug: 'users',
-      name: 'Moderador de usuarios',
-      description: 'Controle sobre os usuários do sistema'
-    })
-    const notices = await Factory.model('Adonis/Acl/Permission').make({
-      slug: 'notices',
-      name: 'Moderador de Noticias',
-      description: 'Publicar e gerenciar nóticas no sistema'
-    })
-    // ----------------------------- Roles Permission ------------------------
-    await administrator.permissions().save(notices)
-    await administrator.permissions().save(users)
+    const readUsers = await Factory.model('Adonis/Acl/Permission').make(
+      {
+        slug: 'read_users',
+        name: 'Ver usuários',
+        description: 'Controle sobre os usuários do sistema'
+      }
+    )
+    const createUser = await Factory.model('Adonis/Acl/Permission').make(
+      {
+        slug: 'create_users',
+        name: 'Cadastro de usuário',
+        description: 'Controle sobre os usuários do sistema'
+      }
+    )
+    const updateUser = await Factory.model('Adonis/Acl/Permission').make(
+      {
+        slug: 'update_users',
+        name: 'Atualização de usuário',
+        description: 'Controle sobre os usuários do sistema'
+      }
+    )
+    const deleteUser = await Factory.model('Adonis/Acl/Permission').make(
+      {
+        slug: 'delete_users',
+        name: 'Remover usuário',
+        description: 'Controle sobre os usuários do sistema'
+      }
+    )
+    // ----------------------------- Roles Permission -----------------------
+    await administrator.permissions().save(readUsers)
+    await administrator.permissions().save(createUser)
+    await administrator.permissions().save(updateUser)
+    await administrator.permissions().save(deleteUser)
 
     // ----------------------------- Notices --------------------------------
     const noticePedro = await Factory.model('App/Models/Notice').make()
