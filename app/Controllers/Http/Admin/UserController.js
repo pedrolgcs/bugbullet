@@ -27,7 +27,7 @@ class UserController {
    * POST users
    */
   async store ({ request, response }) {
-    const { roles, permissions, ...data } = request.only([
+    const { roles, permissions, sectors, ...data } = request.only([
       'email',
       'password',
       'name',
@@ -36,19 +36,23 @@ class UserController {
       'city',
       'neighborhood',
       'street',
+      'sectors',
       'number',
       'roles',
       'permissions'
     ])
     try {
       const user = await User.create(data)
+      if (sectors) {
+        await user.sectors().attach(sectors)
+      }
       if (roles) {
         await user.roles().attach(roles)
       }
       if (permissions) {
         await user.permissions().attach(permissions)
       }
-      await user.loadMany(['roles', 'permissions'])
+      await user.loadMany(['sectors', 'roles', 'permissions'])
       return response.status(201).send(user)
     } catch (error) {
       return response.status(400).send({ message: `${error}` })
@@ -62,7 +66,7 @@ class UserController {
   async show ({ params, response }) {
     try {
       const user = await User.findOrFail(params.id)
-      await user.loadMany(['roles', 'permissions'])
+      await user.loadMany(['sectors', 'roles', 'permissions'])
       return response.status(200).send(user)
     } catch (error) {
       return response.status(404).send({ error: `${error}` })
@@ -74,7 +78,7 @@ class UserController {
    * PUT or PATCH users/:id
    */
   async update ({ params, request, response }) {
-    const { roles, permissions, ...data } = request.only([
+    const { roles, permissions, sectors, ...data } = request.only([
       'email',
       'name',
       'phone',
@@ -83,6 +87,7 @@ class UserController {
       'neighborhood',
       'street',
       'number',
+      'sectors',
       'roles',
       'permissions'
     ])
@@ -90,13 +95,16 @@ class UserController {
       const user = await User.findOrFail(params.id)
       user.merge(data)
       await user.save()
+      if (sectors) {
+        await user.sectors().sync(sectors)
+      }
       if (roles) {
         await user.roles().sync(roles)
       }
       if (permissions) {
         await user.permissions().sync(permissions)
       }
-      await user.loadMany(['roles', 'permissions'])
+      await user.loadMany(['sectors', 'roles', 'permissions'])
       return response.status(201).send(user)
     } catch (error) {
       return response.status(404).send({ message: `${error}` })
