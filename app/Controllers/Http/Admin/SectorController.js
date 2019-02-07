@@ -13,7 +13,7 @@ class SectorController {
     const { page } = request.all()
     try {
       const sectors = await Sector.query()
-        .paginate(page, 20)
+        .paginate(page, 10)
       return response.status(200).send(sectors)
     } catch (error) {
       return response.status(500).send({ error: `${error}` })
@@ -25,13 +25,26 @@ class SectorController {
    * POST sectors
    */
   async store ({ request, response }) {
+    const data = request.only(['name', 'description'])
+    try {
+      const sector = await Sector.create(data)
+      return response.status(201).send(sector)
+    } catch (error) {
+      return response.status(400).send({ error: `${error}` })
+    }
   }
 
   /**
    * Display a single sector.
    * GET sectors/:id
    */
-  async show ({ params, request, response }) {
+  async show ({ params, response }) {
+    try {
+      const sector = await Sector.findOrFail(params.id)
+      return response.status(200).send(sector)
+    } catch (error) {
+      return response.status(404).send({ error: `${error}` })
+    }
   }
 
   /**
@@ -39,13 +52,29 @@ class SectorController {
    * PUT or PATCH sectors/:id
    */
   async update ({ params, request, response }) {
+    const data = request.only(['name', 'description'])
+    try {
+      const sector = await Sector.findOrFail(params.id)
+      sector.merge(data)
+      await sector.save()
+      return response.status(201).send(sector)
+    } catch (error) {
+      return response.status(404).send({ message: `${error}` })
+    }
   }
 
   /**
    * Delete a sector with id.
    * DELETE sectors/:id
    */
-  async destroy ({ params, request, response }) {
+  async destroy ({ params, response }) {
+    try {
+      const sector = await Sector.findOrFail(params.id)
+      await sector.delete()
+      return response.status(204).send()
+    } catch (error) {
+      return response.status(404).send({ message: `${error}` })
+    }
   }
 }
 

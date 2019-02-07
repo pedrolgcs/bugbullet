@@ -17,21 +17,29 @@ Aplicação desenvolvida utilizando o [AdonisJs - Node.js web framework](https:/
 #### Prefix for all routes -> api/v1
 
 ---
-### User Router
+### User
 - ( /user ) - POST - Create a new User
 - ( /user ) - GET - Show logged user => **Middleware** [auth]
 - ( /user ) - PUT - Update user logged => **Middleware** [auth]
 ---
-### Users Moderator
+### Users
 - ( /users ) - GET - List all users => **Middleware** [auth, can:(read_users)]
 - ( /users ) - POST - Create a new User => **Middleware** [auth, can:(create_users)]
 - ( /users:id ) - GET - Show a user by ID => **Middleware** [auth, can:(read_users)]
 - ( /users:id ) - PUT - Update user by ID => **Middleware** [auth, can:(update_users)]
 - ( /users:id ) - DELETE - Delete user by ID => **Middleware** [auth, can:(delete_users)]
 ---
-### Notices Moderator
+### Notices
 - ( /notices ) - GET - List all notices order by last notices
 - ( /notices ) - POST - Create a new Notice => **Middleware** [auth, can:(create_notice)]
 - ( /notices:id ) - GET - Show a notice by ID
 - ( /notices:id ) - PUT - Update notice by ID => **Middleware** [auth, can:(update_notice)]
 - ( /notices:id ) - DELETE - Delete notice by ID => **Middleware** [auth, can:(delete_notice)]
+---
+### Sectors
+- ( /sectors ) - GET - List all sectors => **Middleware** [auth, can:(read_sectors)]
+- ( /sectors ) - POST - Create a new Sector => **Middleware** [auth, can:(create_sectors)]
+- ( /sectors:id ) - GET - Show a sector by ID => **Middleware** [auth, can:(read_sectors)]
+- ( /sectors:id ) - PUT - Update sector by ID => **Middleware** [auth, can:(update_sectors)]
+- ( /sectors:id ) - DELETE - Delete sector by ID => **Middleware** [auth, can:(delete_sectors)]
+---
