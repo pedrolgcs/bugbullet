@@ -36,4 +36,12 @@ Route.group(() => {
       [['update'], ['auth:jwt', 'can:update_notices']],
       [['destroy'], ['auth:jwt', 'can:delete_notices']]
     ]))
+  // ----- Sectors -----
+  Route.resource('/sectors', 'SectorController').apiOnly()
+    .middleware(new Map([
+      [['index', 'show'], ['auth:jwt', 'can:read_sectors']],
+      [['store'], ['auth:jwt', 'can:create_sectors']],
+      [['update'], ['auth:jwt', 'can:update_sectors']],
+      [['destroy'], ['auth:jwt', 'can:delete_sectors']]
+    ]))
 }).namespace('Admin').prefix('api/v1')

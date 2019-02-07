@@ -49,7 +49,28 @@ class PermissionSeeder {
       {
         slug: 'delete_notices',
         name: 'Remover notícias',
-        description: 'Remover notícias do siste,a'
+        description: 'Remover notícias do sistema'
+      },
+      // Sectors
+      {
+        slug: 'read_sectors',
+        name: 'Ver setores',
+        description: 'Remover setores do sistema'
+      },
+      {
+        slug: 'create_sectors',
+        name: 'Criar setores',
+        description: 'Remover setores do sistema'
+      },
+      {
+        slug: 'update_sectors',
+        name: 'Atualizar setores',
+        description: 'Remover setores do sistema'
+      },
+      {
+        slug: 'delete_sectors',
+        name: 'Remover setores',
+        description: 'Remover setores do sistema'
       }
     ]
     permissionsUser.forEach(async permission => {
