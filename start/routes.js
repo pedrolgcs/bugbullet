@@ -10,11 +10,12 @@ Route.get('/', () => {
 // -------------------- Login -------------------- //
 Route.post('/sessions', 'SessionController.create').prefix('api/v1')
 
+// User register
+Route.post('/user', 'UserController.store').as('user.store')
 // -------------------- User Auth -------------------- //
 Route.group(() => {
-  Route.post('/user', 'UserController.store').as('user.store')
   Route.get('/user', 'UserController.show').as('user.show')
-  Route.put('/user', 'UserController.update').as('users.update')
+  Route.put('/user', 'UserController.update').as('user.update')
 }).middleware(['auth']).prefix('api/v1')
 
 // -------------------- Moderator -------------------- //
@@ -31,6 +32,8 @@ Route.group(() => {
   // ----- Notices -----
   Route.resource('/notices', 'NoticeController').apiOnly()
     .middleware(new Map([
-      [['store', 'update', 'destroy'], ['auth:jwt', 'can:notices']]
+      [['store'], ['auth:jwt', 'can:create_notices']],
+      [['update'], ['auth:jwt', 'can:update_notices']],
+      [['destroy'], ['auth:jwt', 'can:delete_notices']]
     ]))
 }).namespace('Admin').prefix('api/v1')
