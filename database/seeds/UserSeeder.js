@@ -11,6 +11,7 @@
 */
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
+const PermissionsArray = require('./PermisionsArray')
 const Factory = use('Factory')
 class UserSeeder {
   async run () {
@@ -33,7 +34,12 @@ class UserSeeder {
       name: 'Coordinator',
       description: 'Coordinator system'
     })
-    // // ----------------------------- User Role ------------------------------
+    // ----------------------------- Permissions ----------------------------
+    PermissionsArray.forEach(async perm => {
+      let permission = await Factory.model('Adonis/Acl/Permission').create(perm)
+      await administrator.permissions().save(permission, administrator)
+    })
+    // ----------------------------- User Role ------------------------------
     await pedro.roles().save(administrator)
     await jana.roles().save(coordinator)
 
