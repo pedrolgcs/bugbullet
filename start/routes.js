@@ -44,4 +44,12 @@ Route.group(() => {
       [['update'], ['auth:jwt', 'can:update_sectors']],
       [['destroy'], ['auth:jwt', 'can:delete_sectors']]
     ]))
+  // ----- Roles -----
+  Route.resource('/roles', 'RoleController').apiOnly()
+    .middleware(new Map([
+      [['index', 'show'], ['auth:jwt', 'can:read_roles']],
+      [['store'], ['auth:jwt', 'can:create_roles']],
+      [['update'], ['auth:jwt', 'can:update_roles']],
+      [['destroy'], ['auth:jwt', 'can:delete_roles']]
+    ]))
 }).namespace('Admin').prefix('api/v1')

@@ -44,7 +44,7 @@ class PermissionSeeder {
       {
         slug: 'update_notices',
         name: 'Atualizar notícias',
-        description: 'Cadastrar novas noticias'
+        description: 'Atualizar noticias'
       },
       {
         slug: 'delete_notices',
@@ -55,22 +55,43 @@ class PermissionSeeder {
       {
         slug: 'read_sectors',
         name: 'Ver setores',
-        description: 'Remover setores do sistema'
+        description: 'Ver setores do sistema'
       },
       {
         slug: 'create_sectors',
         name: 'Criar setores',
-        description: 'Remover setores do sistema'
+        description: 'Criar setores no sistema'
       },
       {
         slug: 'update_sectors',
         name: 'Atualizar setores',
-        description: 'Remover setores do sistema'
+        description: 'Atualizar setores do sistema'
       },
       {
         slug: 'delete_sectors',
         name: 'Remover setores',
         description: 'Remover setores do sistema'
+      },
+      // Roles
+      {
+        slug: 'read_roles',
+        name: 'Ver grupos',
+        description: 'Ver grupos do sistema'
+      },
+      {
+        slug: 'create_roles',
+        name: 'Criar grupos',
+        description: 'Criar grupos do sistema'
+      },
+      {
+        slug: 'update_roles',
+        name: 'Atualizar grupos',
+        description: 'Atualizar grupos do sistema'
+      },
+      {
+        slug: 'delete_roles',
+        name: 'Remover grupos',
+        description: 'Remover grupos do sistema'
       }
     ]
     permissionsUser.forEach(async permission => {

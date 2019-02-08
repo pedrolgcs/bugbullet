@@ -12,6 +12,7 @@ class SectorUserSchema extends Schema {
         .unsigned()
         .references('id')
         .inTable('users')
+        .notNullable()
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
       table
@@ -19,6 +20,7 @@ class SectorUserSchema extends Schema {
         .unsigned()
         .references('id')
         .inTable('sectors')
+        .notNullable()
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
       table.timestamps()
