@@ -5,7 +5,7 @@ Aplicação desenvolvida utilizando o [AdonisJs - Node.js web framework](https:/
 ## Setup
 
 1. Install **AdonisJS**: `npm i -g @adonisjs/cli`
-2. Open project and use: `npm install` or `yarn install`
+2. Open project and use: `npm install`
 3. Generate application key and create .env: `adonis key:generate`
 4. Config database access in: *.env* file
 5. create tables into database: `adonis migration:run`

@@ -7,8 +7,12 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 }).prefix('api/v1')
 
-// -------------------- Login -------------------- //
-Route.post('/sessions', 'SessionController.create').prefix('api/v1')
+// -------------------- Logins -------------------- //
+Route.group(() => {
+  Route.post('/sessions', 'SessionController.create')
+  Route.get('login/facebook', 'SessionController.redirect')
+  Route.get('facebook/callback', 'SessionController.callback')
+}).prefix('api/v1')
 
 // User register
 Route.post('/user', 'UserController.store').as('user.store')
