@@ -41,6 +41,7 @@ class SectorController {
   async show ({ params, response }) {
     try {
       const sector = await Sector.findOrFail(params.id)
+      await sector.load('categories')
       return response.status(200).send(sector)
     } catch (error) {
       return response.status(404).send({ error: `${error}` })
@@ -57,6 +58,7 @@ class SectorController {
       const sector = await Sector.findOrFail(params.id)
       sector.merge(data)
       await sector.save()
+      await sector.load('categories')
       return response.status(201).send(sector)
     } catch (error) {
       return response.status(404).send({ message: `${error}` })

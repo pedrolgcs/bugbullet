@@ -77,6 +77,27 @@ const PermissionsArray = [
     slug: 'delete_roles',
     name: 'Remover grupos',
     description: 'Remover grupos do sistema'
+  },
+  // Categorys
+  {
+    slug: 'read_categories',
+    name: 'Ver categorias',
+    description: 'Ver categorias do sistema'
+  },
+  {
+    slug: 'create_categories',
+    name: 'Criar categorias',
+    description: 'Criar categorias do sistema'
+  },
+  {
+    slug: 'update_categories',
+    name: 'Atualizar categorias',
+    description: 'Atualizar categorias do sistema'
+  },
+  {
+    slug: 'delete_categories',
+    name: 'Remover categorias',
+    description: 'Remover categorias do sistema'
   }
 ]
 

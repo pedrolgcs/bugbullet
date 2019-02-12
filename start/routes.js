@@ -56,4 +56,12 @@ Route.group(() => {
       [['update'], ['auth:jwt', 'can:update_roles']],
       [['destroy'], ['auth:jwt', 'can:delete_roles']]
     ]))
+  // ----- Categories -----
+  Route.resource('/categories', 'CategoryController').apiOnly()
+    .middleware(new Map([
+      [['index', 'show'], ['auth:jwt', 'can:read_categories']],
+      [['store'], ['auth:jwt', 'can:create_categories']],
+      [['update'], ['auth:jwt', 'can:update_categories']],
+      [['destroy'], ['auth:jwt', 'can:delete_categories']]
+    ]))
 }).namespace('Admin').prefix('api/v1')

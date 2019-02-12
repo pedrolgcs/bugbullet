@@ -4,9 +4,11 @@
 const Model = use('Model')
 
 class Sector extends Model {
-  // one sector hasMany users
   users () {
     return this.belongsToMany('App/Models/User')
+  }
+  categories () {
+    return this.hasMany('App/Models/Category')
   }
 }
 
