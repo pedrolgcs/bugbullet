@@ -49,3 +49,10 @@ Aplicação desenvolvida utilizando o [AdonisJs - Node.js web framework](https:/
 - ( /roles ) - GET - Show a roles by ID => **Middleware** [auth, can:(read_roles)]
 - ( /roles ) - PUT - Update roles by ID => **Middleware** [auth, can:(update_roles)]
 - ( /roles ) - DELETE - Delete roles by ID => **Middleware** [auth, can:(delete_roles)]
+---
+### Categories
+- ( /categories ) - GET - List all categories => **Middleware** [auth, can:(read_categories)]
+- ( /categories ) - POST - Create a new categories => **Middleware** [auth, can:(create_categories)]
+- ( /categories ) - GET - Show a categories by ID => **Middleware** [auth, can:(read_categories)]
+- ( /categories ) - PUT - Update categories by ID => **Middleware** [auth, can:(update_categories)]
+- ( /categories ) - DELETE - Delete categories by ID => **Middleware** [auth, can:(delete_categories)]
