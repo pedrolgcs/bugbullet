@@ -20,6 +20,8 @@ Route.post('/user', 'UserController.store').as('user.store')
 Route.group(() => {
   Route.get('/user', 'UserController.show').as('user.show')
   Route.put('/user', 'UserController.update').as('user.update')
+  Route.resource('/solicitation', 'SolicitationController')
+    .apiOnly().except(['update', 'destroy'])
 }).middleware(['auth']).prefix('api/v1')
 
 // -------------------- Moderator -------------------- //
