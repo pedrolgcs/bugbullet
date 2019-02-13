@@ -56,3 +56,8 @@ Aplicação desenvolvida utilizando o [AdonisJs - Node.js web framework](https:/
 - ( /categories ) - GET - Show a categories by ID => **Middleware** [auth, can:(read_categories)]
 - ( /categories ) - PUT - Update categories by ID => **Middleware** [auth, can:(update_categories)]
 - ( /categories ) - DELETE - Delete categories by ID => **Middleware** [auth, can:(delete_categories)]
+---
+### Solicitation
+- ( /solicitation ) - GET - List all solicitation to user => **Middleware** [auth]
+- ( /solicitation ) - POST - Create a new solicitation => **Middleware** [auth]
+- ( /solicitation ) - GET - Show a solicitation by ID => **Middleware** [auth]
