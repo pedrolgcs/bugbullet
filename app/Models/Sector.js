@@ -10,6 +10,9 @@ class Sector extends Model {
   categories () {
     return this.hasMany('App/Models/Category')
   }
+  solicitations () {
+    return this.hasMany('App/Models/Solicitation')
+  }
 }
 
 module.exports = Sector

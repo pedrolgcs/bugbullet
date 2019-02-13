@@ -32,7 +32,6 @@ Route.group(() => {
       [['update'], ['auth:jwt', 'can:update_users']],
       [['destroy'], ['auth:jwt', 'can:delete_users']]
     ]))
-
   // ----- Notices -----
   Route.resource('/notices', 'NoticeController').apiOnly()
     .middleware(new Map([
